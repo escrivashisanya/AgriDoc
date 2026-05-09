@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "532540450873",
+    "project_id": "agridoc-69fbf",
+    "storage_bucket": "agridoc-69fbf.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532540450873:android:c728450f8baa3dea7d85e8",
+        "android_client_info": {
+          "package_name": "com.josemaria.agridoc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHN4P5dDnV1wvPDXaaabk4IbfUV0P41Qw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gcm_defaultSenderId" translatable="false">532540450873</string>
+    <string name="google_api_key" translatable="false">AIzaSyAHN4P5dDnV1wvPDXaaabk4IbfUV0P41Qw</string>
+    <string name="google_app_id" translatable="false">1:532540450873:android:c728450f8baa3dea7d85e8</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAHN4P5dDnV1wvPDXaaabk4IbfUV0P41Qw</string>
+    <string name="google_storage_bucket" translatable="false">agridoc-69fbf.firebasestorage.app</string>
+    <string name="project_id" translatable="false">agridoc-69fbf</string>
+</resources>
