@@ -4,7 +4,7 @@
             "outputFile": "com.josemaria.agridoc.app-mergeDebugResources-74:/values-v30/values-v30.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\otung\\.gradle\\caches\\8.10.2\\transforms\\0998fc0fb669197d32335390ef5ce277\\transformed\\jetified-material3-release\\res\\values-v30\\values-v30.xml",
+                    "source": "/home/emobilis/.gradle/caches/8.10.2/transforms/a7b785d81c8a7b4672ff964b7eee5ebf/transformed/jetified-material3-release/res/values-v30/values-v30.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

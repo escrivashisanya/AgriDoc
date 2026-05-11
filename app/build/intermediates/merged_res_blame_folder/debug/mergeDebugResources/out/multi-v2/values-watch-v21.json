@@ -4,7 +4,7 @@
             "outputFile": "com.josemaria.agridoc.app-mergeDebugResources-74:/values-watch-v21/values-watch-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\otung\\.gradle\\caches\\8.10.2\\transforms\\0aed49043493e88c701dc57359d1c357\\transformed\\appcompat-1.6.1\\res\\values-watch-v21\\values-watch-v21.xml",
+                    "source": "/home/emobilis/.gradle/caches/8.10.2/transforms/32a3f5e0dd371689e1365fb647385f8a/transformed/appcompat-1.6.1/res/values-watch-v21/values-watch-v21.xml",
                     "from": {
                         "startLines": "2,6,10",
                         "startColumns": "4,4,4",

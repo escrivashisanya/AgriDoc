@@ -4,7 +4,7 @@
             "outputFile": "com.josemaria.agridoc.app-mergeDebugResources-74:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\otung\\.gradle\\caches\\8.10.2\\transforms\\0aed49043493e88c701dc57359d1c357\\transformed\\appcompat-1.6.1\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "/home/emobilis/.gradle/caches/8.10.2/transforms/32a3f5e0dd371689e1365fb647385f8a/transformed/appcompat-1.6.1/res/values-watch-v20/values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\otung\\.gradle\\caches\\8.10.2\\transforms\\cf5330debb60f1d55a72aa7956b20bf7\\transformed\\jetified-play-services-auth-20.7.0\\res\\values-watch-v20\\values.xml",
+                    "source": "/home/emobilis/.gradle/caches/8.10.2/transforms/c14e6e7e045c18d981fa5e2fea5e8469/transformed/jetified-play-services-auth-20.7.0/res/values-watch-v20/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",

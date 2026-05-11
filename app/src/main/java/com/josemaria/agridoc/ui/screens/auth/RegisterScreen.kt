@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.text.font.*
 import androidx.compose.ui.text.input.*
 import androidx.compose.ui.unit.*
@@ -40,8 +41,9 @@ fun RegisterScreen(
     val secondaryGreen = Color(0xFF4CAF50)
     val backgroundColor = Color(0xFFF7FFF8)
 
-    val auth = FirebaseAuth.getInstance()
-    val database = FirebaseDatabase.getInstance().reference
+    val isPreview = LocalInspectionMode.current
+    val auth = if (isPreview) null else FirebaseAuth.getInstance()
+    val database = if (isPreview) null else FirebaseDatabase.getInstance().reference
     val context = LocalContext.current
 
     Scaffold(
@@ -190,7 +192,7 @@ fun RegisterScreen(
                                 Toast.makeText(context, "Fill all fields", Toast.LENGTH_SHORT).show()
                             } else if (password != confirmPassword) {
                                 Toast.makeText(context, "Passwords do not match", Toast.LENGTH_SHORT).show()
-                            } else {
+                            } else if (auth != null && database != null) {
 
                                 auth.createUserWithEmailAndPassword(email, password)
                                     .addOnCompleteListener { task ->

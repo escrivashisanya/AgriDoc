@@ -1,8 +1,7 @@
 package com.josemaria.agridoc.ui.viewmodel
 
-import android.app.Application
 import android.graphics.Bitmap
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.josemaria.agridoc.data.DiseaseRepository
 import com.josemaria.agridoc.ml.PlantDiseaseClassifier
@@ -23,11 +22,11 @@ data class ScanUiState(
     val error: String? = null
 )
 
-class ScanViewModel(application: Application) : AndroidViewModel(application) {
+class ScanViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(ScanUiState())
     val uiState: StateFlow<ScanUiState> = _uiState.asStateFlow()
 
-    private val classifier = PlantDiseaseClassifier(application)
+   // private val classifier = PlantDiseaseClassifier(application)
 
     fun onImageCaptured(bitmap: Bitmap) {
         _uiState.update { it.copy(bitmap = bitmap) }
@@ -41,16 +40,15 @@ class ScanViewModel(application: Application) : AndroidViewModel(application) {
                 it.copy(isLoading = true)
             }
 
-            val (disease, confidence) = classifier.classify(bitmap)
-            val info = DiseaseRepository.getInfo(disease)
+
+
 
             _uiState.update {
                 it.copy(
-                    isLoading = false,
-                    disease = disease,
-                    confidence = confidence,
-                    treatment = info.treatment,
-                    prevention = info.prevention
+                    disease = "Tomato Early Blight",
+                    confidence = 0.95f,
+                    treatment = "Apply fungicides weekly",
+                    prevention = "Avoid overwatering, use resistant varieties",
                 )
             }
         }

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("org.jetbrains.kotlin.plugin.compose")
     alias(libs.plugins.google.gms.google.services)
 }
 
@@ -37,8 +38,12 @@ android {
     buildFeatures {
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
+
+    packaging {
+        jniLibs {
+            // This ensures .so files are aligned to 16KB boundaries
+            useLegacyPackaging = false
+        }
     }
 }
 

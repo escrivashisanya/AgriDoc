@@ -16,6 +16,10 @@ import androidx.navigation.NavController
 import com.josemaria.agridoc.ui.components.AppScaffold
 import com.josemaria.agridoc.ui.components.DetailCard
 
+import androidx.compose.ui.platform.LocalInspectionMode
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.josemaria.agridoc.ui.theme.AgriDocTheme
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import androidx.compose.ui.text.font.FontWeight
@@ -30,8 +34,9 @@ fun HistoryDetailsScreen(
     val primaryGreen = Color(0xFF1B5E20)
     val secondaryGreen = Color(0xFF43A047)
 
-    val auth = FirebaseAuth.getInstance()
-    val db = FirebaseDatabase.getInstance().reference
+    val isPreview = LocalInspectionMode.current
+    val auth = if (isPreview) null else FirebaseAuth.getInstance()
+    val db = if (isPreview) null else FirebaseDatabase.getInstance().reference
 
     var cropName by remember { mutableStateOf("Loading...") }
     var diseaseName by remember { mutableStateOf("Loading...") }
@@ -42,11 +47,20 @@ fun HistoryDetailsScreen(
 
     // 🔥 FETCH DATA FROM FIREBASE
     LaunchedEffect(scanId) {
-        val userId = auth.currentUser?.uid ?: return@LaunchedEffect
+        if (isPreview) {
+            cropName = "Tomato Plant"
+            diseaseName = "Early Blight"
+            scanDate = "25 Oct 2024"
+            confidence = "98.2%"
+            treatment = "Use copper-based fungicides and improve air circulation by pruning lower leaves."
+            status = "Treatment Required"
+            return@LaunchedEffect
+        }
+        val userId = auth?.currentUser?.uid ?: return@LaunchedEffect
 
-        db.child("scans").child(userId).child(scanId)
-            .get()
-            .addOnSuccessListener { snapshot ->
+        db?.child("scans")?.child(userId)?.child(scanId)
+            ?.get()
+            ?.addOnSuccessListener { snapshot ->
 
                 cropName = snapshot.child("cropName").value?.toString() ?: "Unknown Crop"
                 diseaseName = snapshot.child("diseaseName").value?.toString() ?: "Unknown Disease"
@@ -105,6 +119,14 @@ fun HistoryDetailsScreen(
     }
 }
 
+@Preview(showBackground = true)
+@Composable
+fun HistoryDetailsScreenPreview() {
+    AgriDocTheme {
+        HistoryDetailsScreen(navController = rememberNavController(), scanId = "preview_id")
+    }
+}
+
 @Composable
 private fun HistoryHeader(
     cropName: String,
@@ -158,3 +180,4 @@ private fun HistoryHeader(
         }
     }
 }
+

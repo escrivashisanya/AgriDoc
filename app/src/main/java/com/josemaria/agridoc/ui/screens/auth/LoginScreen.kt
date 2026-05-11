@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.*
 import androidx.compose.ui.text.input.*
@@ -39,8 +40,9 @@ fun LoginScreen(
     val secondaryGreen = Color(0xFF4CAF50)
     val backgroundColor = Color(0xFFF7FFF8)
 
-    val auth = FirebaseAuth.getInstance()
-    val database = FirebaseDatabase.getInstance().reference
+    val isPreview = LocalInspectionMode.current
+    val auth = if (isPreview) null else FirebaseAuth.getInstance()
+    val database = if (isPreview) null else FirebaseDatabase.getInstance().reference
 
     val context = LocalContext.current
 
@@ -169,7 +171,7 @@ fun LoginScreen(
 
                             if (email.isEmpty() || password.isEmpty()) {
                                 Toast.makeText(context, "Fill all fields", Toast.LENGTH_SHORT).show()
-                            } else {
+                            } else if (auth != null && database != null) {
 
                                 auth.signInWithEmailAndPassword(email, password)
                                     .addOnCompleteListener { task ->
